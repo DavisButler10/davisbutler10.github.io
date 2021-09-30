@@ -12,19 +12,20 @@ body,h1,h2,h3,h4,h5,h6 {font-family: "Karma", sans-serif}
 <body>
 
 <!-- Sidebar (hidden by default) -->
-<nav class="w3-sidebar w3-bar-block w3-card w3-top w3-xlarge w3-animate-left" style="display:none;z-index:2;width:40%;min-width:300px" id="mySidebar">
+<nav class="w3-sidebar w3-bar-block w3-card w3-top w3-xlarge w3-animate-left" style="display:none;z-index:2;width:15%;min-width:300px" id="mySidebar">
   <a href="javascript:void(0)" onclick="w3_close()"
   class="w3-bar-item w3-button">Close</a>
   <a href="#gameEngineLab" onclick="w3_close()" class="w3-bar-item w3-button">Game Engine Laboratory</a>
   <a href="#artificialInteligence" onclick="w3_close()" class="w3-bar-item w3-button">Artificial Intelligence</a>
   <a href="#multiplayerGames" onclick="w3_close()" class="w3-bar-item w3-button">Multiplayer Games</a>
   <a href="#virtualReality" onclick="w3_close()" class="w3-bar-item w3-button">Virtual Reality</a>
+  <a href="#Animation" onclick="w3_close()" class="w3-bar-item w3-button">Animation</a>
   <a href="#about" onclick="w3_close()" class="w3-bar-item w3-button">About</a>
 </nav>
 
 <!-- Top menu -->
 <div class="w3-top">
-  <div class="w3-white w3-xlarge" style="max-width:1200px;margin:auto">
+  <div class="w3-black w3-xlarge" style="max-width:1600px;margin:auto">
     <div class="w3-button w3-padding-16 w3-left" onclick="w3_open()">☰</div>
     <a href="#about" class="w3-button w3-right w3-padding-16">About</a>
     <div class="w3-center w3-padding-16">Portfolio</div>
@@ -316,6 +317,63 @@ body,h1,h2,h3,h4,h5,h6 {font-family: "Karma", sans-serif}
   </div>
   </div>
   
+  <hr id="Animation"> 
+<!-- !PAGE CONTENT! -->
+<div class="w3-main w3-content w3-padding" style="max-width:1200px;margin-top:100px">
+
+  <!-- First Video Grid-->
+  <div class="w3-white w3-xlarge" style="max-width:1200px;margin:auto">
+	<div class="w3-center w3-padding-16">Animation</div>
+  </div>
+  <div class="w3-row-padding w3-padding-16 w3-center">
+    <div class="w3-half">
+	  <span title="World Building I">
+	  <video width="480" height="360" controls>
+	  <source src="vids/WBI_Demo.mp4" type="video/mp4">
+	  </video>
+	  </a>
+	  </span>
+      <h3>World Building I</h3>
+      <p>In this video, you will see my first crack at Maya, Zbrush, and Houdini. Recreation of the Parthenon, an underwater submarine, and a bicycle using Maya. A fish and butterfly sculpt in Zbrush. And, a volcano erupting using Houdini. </p>
+    </div>
+    <div class="w3-half">
+	  <span title="World Building II">
+      <video width="480" height="360" controls>
+	  <source src="vids/WBII_Demo.mp4" type="video/mp4">
+	  </video>
+	  </a>
+	  </span>
+      <h3>World Building II</h3>
+      <p>Using Maya, Zbrush, and Houdini again, I have lighting and rendering of a donut truck. Shown is several different lighting designs with shadows and daylight. Using Zbrush, I made a recreation of an alien using UV's and skinning. Last, the alien's icicle space pod in Houdini.  </p>
+    </div>
+  </div>
+  <hr>
+  
+  <!-- Second Video Grid-->
+  <div class="w3-row-padding w3-padding-16 w3-center">
+    <div class="w3-half">
+	  <span title="World Building III">
+      <video width="480" height="360" controls>
+	  <source src="vids/WBIII_Demo.mp4" type="video/mp4">
+	  </video>
+	  </a>
+	  </span>
+      <h3>World Building III</h3>
+      <p>I work through some of the basics of animation here. Creating toothbrush with a cape, animating arms and legs of a human and alien, then creating my owns animations to use and port into Unity. Last is my aliens final rig from scratch including rigging, control creationg, skinning, and animating.   </p>
+    </div>
+    <div class="w3-half">
+	  <span title="World Building IV">
+      <video width="480" height="360" controls>
+	  <source src="vids/WBIV_Demo.mp4" type="video/mp4">
+	  </video>
+	  </a>
+	  </span>
+      <h3>World Building IV</h3>
+      <p>This video shows the animation of a ball bouncing through a course, a character jumping, a character getting up from his chair, then walking, jumping, and a fully rendered mini animation of Yoda. </p>
+    </div>
+  </div>
+  </div>
+  
   <hr id="about">
 
   <!-- About Section -->
@@ -325,7 +383,7 @@ body,h1,h2,h3,h4,h5,h6 {font-family: "Karma", sans-serif}
     <div class="w3-padding-32">
       <h4><b>Davis Butler</b></h4>
       <h6><i>Games, Animation, and Simulation | Embry-Riddle Aeronautical University</i></h6>
-      <p>Aspiring game developer. All of these projects were made using Unity 2019/2020. This page is an accumulation of my last semesters in Game Engine Architecture, Artificial Intelligence, Multiplayer Games Systems, and Virtual Reality Games. Much of the code is based off the implementations from these books: Artificial Intelligence for Games by Ian Millington, Game Programming Patterns by Robert Nystrom, and Hands-On Game Development Patterns with Unity 2019 by David Baron, Unity 2020 Virtual Reality Projects by Jonathon Linowes as well as multiplayer tutorials from Zenza Academy. </p>
+      <p>Game developer. All of these projects were made using Unity 2019/2020/2021. This page is an accumulation of my last 4 semesters in Game Engine Architecture, Artificial Intelligence, Multiplayer Games Systems, Virtual Reality Games, and Modeling/World Building classes. Some code is based off the implementations from these books: Artificial Intelligence for Games by Ian Millington, Game Programming Patterns by Robert Nystrom, and Hands-On Game Development Patterns with Unity 2019 by David Baron, Unity 2020 Virtual Reality Projects by Jonathon Linowes as well as multiplayer tutorials from Zenza Academy. </p>
     </div>
   </div>
   <hr>
