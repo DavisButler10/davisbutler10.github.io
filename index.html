@@ -1,415 +1,533 @@
 <!DOCTYPE html>
-<html>
-<title>Davis Butler</title>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Karma">
-<style>
-body,h1,h2,h3,h4,h5,h6 {font-family: "Karma", sans-serif}
-.w3-bar-block .w3-bar-item {padding:20px}
-</style>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Davis Butler - Game Developer</title>
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      background-color: #1b1b1b;
+      color: #fff;
+      font-family: 'Press Start 2P', cursive;
+      image-rendering: pixelated;
+    }
+
+    header {
+      background: #333;
+      padding: 1rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 4px solid #00aaff; /* Blue border */
+    }
+
+    .site-title {
+      color: #00aaff; /* Blue title */
+      font-size: 1rem;
+    }
+
+    .tab-buttons {
+      display: flex;
+      gap: 1.5rem;
+    }
+
+    .tab-buttons button {
+      background: none;
+      border: none;
+      font: inherit;
+      cursor: pointer;
+      padding-bottom: 4px;
+      transition: color 0.3s, border-bottom 0.3s;
+    }
+	
+
+    .tab-buttons button[data-tab="about"] {
+		color: red;
+	}
+	.tab-buttons button[data-tab="minecraft"] {
+		color: orange;
+	}
+	.tab-buttons button[data-tab="portfolio"] {
+		color: yellow;
+	}
+	.tab-buttons button[data-tab="resume"] {
+		color: limegreen;
+	}
+
+	.tab-buttons button.active[data-tab="about"] {
+		border-bottom: 4px solid red;
+	}
+	.tab-buttons button.active[data-tab="minecraft"] {
+		border-bottom: 4px solid orange;
+	}
+	.tab-buttons button.active[data-tab="portfolio"] {
+		border-bottom: 4px solid yellow;
+	}
+	.tab-buttons button.active[data-tab="resume"] {
+		border-bottom: 4px solid limegreen;
+	}
+
+    .tab-content {
+      display: none;
+      padding: 2rem;
+    }
+
+    .tab-content.active {
+      display: block;
+    }
+
+
+    a {
+      color: #00ffff;
+    }
+
+    iframe {
+      border: 4px solid #00aaff;
+      margin-top: 1rem;
+      width: 100%;
+      height: 500px;
+    }
+	
+	.content-wrapper {
+		max-width: 60%;
+		margin: 0 auto;
+	}
+	
+	#portfolio {
+  padding: 2rem;
+}
+
+.portfolio-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.75rem;
+  justify-items: center;
+}
+
+.portfolio-item {
+  padding: 0.5rem;
+  border: 4px solid #00aaff;
+  background-color: #2b2b2b;
+  font-family: 'Press Start 2P', cursive;
+  color: white;
+  text-align: center;
+  transition: transform 0.15s ease;
+}
+
+.portfolio-item:hover {
+  transform: scale(1.03);
+  border-color: yellow;
+}
+
+.portfolio-item {
+  width: 300px;
+  border: 4px solid #00aaff;
+  background-color: #2b2b2b;
+  padding: 1rem;
+  text-align: center;
+  font-family: 'Press Start 2P', cursive;
+  color: white;
+}
+
+.portfolio-item img {
+  width: 100%;
+  height: auto;
+  image-rendering: pixelated;
+  border: 2px solid #000;
+  margin-bottom: 0.5rem;
+}
+
+.portfolio-item h2 {
+  font-size: 0.8rem;
+  color: yellow;
+  margin-bottom: 0.5rem;
+}
+
+.portfolio-item p {
+  font-size: 0.6rem;
+  line-height: 1.6;
+  color: #cccccc;
+  margin-bottom: 0.5rem;
+}
+
+.portfolio-item a {
+  color: #00ffff;
+  font-size: 0.6rem;
+  text-decoration: underline;
+}
+  </style>
+</head>
 <body>
 
-<!-- Sidebar (hidden by default) -->
-<nav class="w3-sidebar w3-bar-block w3-card w3-top w3-xlarge w3-animate-left" style="display:none;z-index:2;width:15%;min-width:300px" id="mySidebar">
-  <a href="javascript:void(0)" onclick="w3_close()"
-  class="w3-bar-item w3-button">Close</a>
-  <a href="#gameEngineLab" onclick="w3_close()" class="w3-bar-item w3-button">Game Engine Laboratory</a>
-  <a href="#artificialInteligence" onclick="w3_close()" class="w3-bar-item w3-button">Artificial Intelligence</a>
-  <a href="#multiplayerGames" onclick="w3_close()" class="w3-bar-item w3-button">Multiplayer Games</a>
-  <a href="#virtualReality" onclick="w3_close()" class="w3-bar-item w3-button">Virtual Reality</a>
-  <a href="#Animation" onclick="w3_close()" class="w3-bar-item w3-button">Animation</a>
-  <a href="#about" onclick="w3_close()" class="w3-bar-item w3-button">About</a>
-</nav>
+  <header>
+    <div class="site-title">Davis Butler</div>
+    <nav class="tab-buttons">
+		<button data-tab="about" class="active" onclick="showTab('about')">About Me</button>
+		<button data-tab="minecraft" onclick="showTab('minecraft')">Minecraft</button>
+		<button data-tab="portfolio" onclick="showTab('portfolio')">Portfolio</button>
+		<button data-tab="resume" onclick="showTab('resume')">Resume</button>
+	</nav>
 
-<!-- Top menu -->
-<div class="w3-top">
-  <div class="w3-black w3-xlarge" style="max-width:1600px;margin:auto">
-    <div class="w3-button w3-padding-16 w3-left" onclick="w3_open()">☰</div>
-    <a href="#about" class="w3-button w3-right w3-padding-16">About</a>
-    <div class="w3-center w3-padding-16">Portfolio</div>
+  </header>
+
+  <main>
+  <div class="content-wrapper">
+   <section id="about" class="tab-content active">
+  <h1>Welcome!</h1>
+  <p style="margin-bottom: 1.5rem; line-height: 1.8;">
+    I’m a <span style="color: #ff4c4c; font-weight: bold;">game developer</span> who’s passionate about building 
+    <span style="color: #ffff66; font-weight: bold;">fun, immersive, and memorable experiences</span>. 
+    With over <span style="color: #00aaff; font-weight: bold;">4 years in the industry</span>, I’ve worked on everything from 
+    <span style="color: #ffff66; font-weight: bold;">designing original game modes and expansions</span> to 
+    <span style="color: #00aaff; font-weight: bold;">programming UI</span>, 
+    <span style="color: #ffff66; font-weight: bold;">creating custom art and 3D models</span>, and diving into 
+    <span style="color: #00aaff; font-weight: bold;">R&D</span> to keep things fresh and engaging.
+  </p>
+
+  <p style="margin-bottom: 1.5rem; line-height: 1.8;">
+    Most recently, I was part of the team behind 
+    <span style="color: orange; font-weight: bold;">MineVille</span>, one of the six featured 
+    <span style="color: #ffff66; font-weight: bold;">Minecraft servers officially partnered with Microsoft</span>. 
+    I had the chance to <span style="color: #00aaff; font-weight: bold;">develop new game modes</span>, 
+    <span style="color: #ffff66; font-weight: bold;">deliver content updates</span>, and 
+    <span style="color: #ff4c4c; font-weight: bold;">help shape the visual and interactive style</span> of the platform — 
+    all with the goal of making the <span style="color: #ffff66; font-weight: bold;">player experience the best it can be</span>.
+  </p>
+
+  <p style="margin-bottom: 4rem; line-height: 1.8;">
+    I come from a background in <span style="color: #00ff99; font-weight: bold;">Simulation Science</span> and 
+    <span style="color: #00ff99; font-weight: bold;">Cyber Security</span>, and I love blending 
+    <span style="color: #ffff66; font-weight: bold;">creativity with technical problem-solving</span>. 
+    Whether I’m <span style="color: #00aaff; font-weight: bold;">building systems from scratch</span> or 
+    <span style="color: #ff4c4c; font-weight: bold;">collaborating with a team</span> to polish 
+    <span style="color: #ffff66; font-weight: bold;">gameplay mechanics</span>, I’m all about 
+    <span style="color: #ff4c4c; font-weight: bold;">crafting projects that players love</span>.
+  </p>
+	<div style="text-align: center; margin-top: 2rem;">
+    <!-- Your profile image -->
+    <img src="img/profile.jpg" alt="Davis Butler" width="378" height="504" 
+         style="image-rendering: pixelated; border-radius: 8px; border: 2px solid #000;" />
+  </div>
+  <div style="margin-top: 2rem; text-align: center;">
+    <a href="https://www.linkedin.com/in/davis-butler-99788a130/" target="_blank" style="margin: 0 1rem; display: inline-block; line-height: 0;">
+  <img src="https://upload.wikimedia.org/wikipedia/commons/8/81/LinkedIn_icon.svg"
+       alt="LinkedIn" width="40" height="40"
+       style="display: block; image-rendering: pixelated;" />
+</a>
+    <a href="https://github.com/DavisButler10" target="_blank" style="margin: 0 1rem;">
+		<img src="https://upload.wikimedia.org/wikipedia/commons/9/91/Octicons-mark-github.svg"
+       alt="GitHub" width="40" height="40"
+       style="filter: invert(1); image-rendering: pixelated;" />
+	</a>
+  </div>
+</section>
+	
+	
+	
+<section id="minecraft" class="tab-content">
+  <h2 style="text-align: center; margin-bottom: 1rem;">
+    <img src="img/mineville.png" alt="Mineville Logo" style="max-width: 50%; height: auto; image-rendering: pixelated;" />
+  </h2>
+
+  <!-- Prison -->
+<div style="margin-bottom: 4rem; display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; align-items: start;">
+  <div>
+    <h3 style="color: orange;">Prison</h3>
+    <p style="line-height: 1.6;">
+      A progressive mining and economy gamemode where players grind through increasingly complex mines,
+      unlock perks, and trade with other inmates. I designed custom pickaxe upgrades, animated prestige menus,
+      and oversaw multiple season resets with performance improvements.
+    </p>
+    <img src="img/prison2.png" style="width: 100%; margin-top: 1rem; image-rendering: pixelated; border: 2px solid #333;" />
+  </div>
+  <div style="display: flex; flex-direction: column; gap: 1rem;">
+    <img src="img/prison3.png" style="width: 100%; image-rendering: pixelated; border: 2px solid #333;" />
+    <img src="img/prison1.png" style="width: 100%; image-rendering: pixelated; border: 2px solid #333;" />
   </div>
 </div>
- 
-<hr id="gameEngineLab"> 
-<!-- !PAGE CONTENT! -->
-<div class="w3-main w3-content w3-padding" style="max-width:1200px;margin-top:100px">
 
-  <!-- First Photo Grid-->
-  <div class="w3-white w3-xlarge" style="max-width:1200px;margin:auto">
-	<div class="w3-center w3-padding-16">Game Engine Laboratory</div>
+  <!-- Skyblock -->
+  <div style="margin-bottom: 4rem; display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; align-items: start;">
+    <div>
+      <h3 style="color: orange;">Skyblock</h3>
+      <p style="line-height: 1.6;">
+  Players start on a tiny floating island and expand outward, automating farms and fighting sky bosses.
+  I helped develop unique island mechanics, multiplayer co-op systems, and custom mob behavior for rare spawns.
+  <br><br>
+  My focus was on designing scalable island expansion tools, coding resource generators using Minecraft functions,
+  and balancing gameplay loops to keep player progression engaging across all tiers.
+</p>
+      <img src="img/skyblock3.png" style="width: 100%; image-rendering: pixelated; border: 2px solid #333; margin-top: 1rem;" />
+    </div>
+    <div style="display: flex; flex-direction: column; gap: 1rem;">
+      <img src="img/skyblock1.png" style="width: 100%; image-rendering: pixelated; border: 2px solid #333;" />
+      <img src="img/skyblock2.png" style="width: 100%; image-rendering: pixelated; border: 2px solid #333;" />
+    </div>
   </div>
-  <div class="w3-row-padding w3-padding-16 w3-center">
-    <div class="w3-third">
-	  <span title="SpawnSystem">
-	  <a href="https://davisbutler10.github.io/DB_M02_DV01/">
-      <img src="img/spawnsystem.jpg" alt="spawnsystem" style="width:100%">
-	  </a>
-	  </span>
-      <h3>Spawn System</h3>
+
+  <!-- Farming Simulator -->
+  <div style="margin-bottom: 4rem; display: grid; grid-template-columns: 2fr 1fr; gap: 1.5rem; align-items: end;">
+    <div>
+      <h3 style="color: orange;">🌾 Farming Simulator</h3>
+      <p style="line-height: 1.6;">
+        Players manage massive farms, automate planting and harvesting, and trade crops for better equipment.
+        I handled performance optimization for large field rendering, and scripted dynamic seasons that affect yields.
+      </p>
+      <img src="img/farming1.png" style="width: 100%; image-rendering: pixelated; border: 2px solid #333; margin-top: 1rem;" />
+    </div>
+    <div>
+      <img src="img/farming2.png" style="width: 100%; image-rendering: pixelated; border: 2px solid #333;" />
+    </div>
+  </div>
+
+  <!-- Dungeon Simulator -->
+  <div style="margin-bottom: 4rem; display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; align-items: center;">
+    <div style="display: flex; flex-direction: column; gap: 1rem;">
+      <img src="img/dungeon1.png" style="width: 100%; image-rendering: pixelated; border: 2px solid #333;" />
+      <img src="img/dungeon2.png" style="width: 100%; image-rendering: pixelated; border: 2px solid #333;" />
+    </div>
+    <div>
+      <h3 style="color: orange;">🏰 Dungeon Simulator</h3>
+      <p style="line-height: 1.6;">
+        An adventure-focused mode with procedurally generated dungeons, traps, and monster waves.
+        I implemented the dungeon layout generator, reward chests, and boss battle mechanics with redstone and commands.
+      </p>
+    </div>
+  </div>
+
+  <!-- Cookcraft -->
+  <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-bottom: 4rem; align-items: start;">
+    <div style="display: flex; flex-direction: column; justify-content: flex-end;">
+      <img src="img/cookcraft2.png" style="width: 100%; margin-bottom: 1rem; image-rendering: pixelated; border: 2px solid #333;" />
+      <img src="img/cookcraft1.png" style="width: 100%; image-rendering: pixelated; border: 2px solid #333;" />
+    </div>
+    <div style="display: flex; flex-direction: column; justify-content: space-between;">
+      <div>
+        <h3 style="color: orange;">🍳 Cookcraft</h3>
+        <p style="line-height: 1.6;">
+          A fast-paced kitchen simulation game where players prepare recipes for villagers under time pressure.
+          I built the crafting logic, coordinated with artists for retro UI, and coded the recipe queue / scoring systems.
+          <br><br>
+          Each dish had randomized ingredients, a score tracker, and a satisfaction meter per customer,
+          all built with ScriptableObjects for modularity and editor-friendly tweaking.
+        </p>
+      </div>
+      <div>
+        <img src="img/cookcraft3.png" style="width: 100%; image-rendering: pixelated; border: 2px solid #333;" />
+      </div>
+    </div>
+  </div>
+</section>
+
+
+    <section id="portfolio" class="tab-content">
+  <h1 style="text-align: center; color: yellow; margin-bottom: 2rem;">Portfolio</h1>
+
+  <div class="portfolio-grid">
+    <!-- Game Engine Laboratory -->
+    <div class="portfolio-item">
+      <a href="https://davisbutler10.github.io/DB_M02_DV01/" target="_blank">
+        <img src="img/spawnsystem.jpg" alt="Spawn System" />
+      </a>
+      <h2>Spawn System</h2>
       <p>Application of the abstract factory pattern to implement a spawn system.</p>
-	  <p><a href="https://github.com/DavisButler10/DB_M02_DV01/tree/master/Assets/Scripts" target="_blank">scripts</a></p>
+      <a href="https://github.com/DavisButler10/DB_M02_DV01/tree/master/Assets/Scripts" target="_blank">View Scripts</a>
     </div>
-    <div class="w3-third">
-	  <span title="FiniteStateMachine">
-	  <a href="https://davisbutler10.github.io/FiniteStateMachine/">
-      <img src="img/finitestatemachine.jpg" alt="finitestatemachine" style="width:100%">
-	  </a>
-	  </span>
-      <h3>Finite State Machine</h3>
+
+    <div class="portfolio-item">
+      <a href="https://davisbutler10.github.io/FiniteStateMachine/" target="_blank">
+        <img src="img/finitestatemachine.jpg" alt="Finite State Machine" />
+      </a>
+      <h2>Finite State Machine</h2>
       <p>Demonstration of different animations using a finite state machine.</p>
-	  <p><a href="https://github.com/DavisButler10/FiniteStateMachine/tree/master/Scripts" target="_blank">scripts</a></p>
+      <a href="https://github.com/DavisButler10/FiniteStateMachine/tree/master/Scripts" target="_blank">View Scripts</a>
     </div>
-    <div class="w3-third">
-      <span title="AbstractFactory">
-	  <a href="https://davisbutler10.github.io/AbstractFactory--/">
-      <img src="img/abstractfactory.jpg" alt="abstractfactory" style="width:100%">
-	  </a>
-	  </span>
-      <h3>Abstract Factory</h3>
-      <p>Use of the decorator pattern on the previous abstract factory pattern to decorate a rifle.</p>
-      <p><a href="https://github.com/DavisButler10/AbstractFactory--/tree/master/Scripts" target="_blank">scripts</a></p>
-    </div>
-  </div>
-  <hr>
-  
-  <!-- Second Photo Grid-->
-  <div class="w3-row-padding w3-padding-16 w3-center">
-    <div class="w3-third">
-      <span title="EventQueue">
-	  <a href="https://davisbutler10.github.io/EventQueue/">
-      <img src="img/eventqueue.jpg" alt="eventqueue" style="width:100%">
-	  </a>
-	  </span>
-      <h3>Event Queue</h3>
-      <p>Addition of an event queue to my event bus pattern to create a queue spawn system.</p>
-	  <p><a href="https://github.com/DavisButler10/EventQueue/tree/master/Scripts" target="_blank">scripts</a></p>
-    </div>
-    <div class="w3-third">
-      <span title="DependencyInjection">
-	  <a href="https://davisbutler10.github.io/Dependency-Injection/">
-      <img src="img/dependencyinjection.jpg" alt="dependencyinjection" style="width:100%">
-	  </a>
-	  </span>
-      <h3>Dependency Injection</h3>
-      <p>Using dependency injection to drive 4 different plane objects simultaniously.</p>
-	  <p><a href="https://github.com/DavisButler10/Dependency-Injection/tree/master/Scripts" target="_blank">scripts</a></p>
-    </div>
-    <div class="w3-third">
-      <span title="SpatialPartitioning">
-	  <a href="https://davisbutler10.github.io/SpacialPartition--/">
-      <img src="img/spatialpartitioning.jpg" alt="spatialpartitioning" style="width:100%">
-	  </a>
-	  </span>
-      <h3>Spatial Partitioning</h3>
-      <p>Showing the difference in efficiency when using spatial partitioning and not.</p>
-	  <p><a href="https://github.com/DavisButler10/SpacialPartition--/tree/master/Scripts" target="_blank">scripts</a></p>
-    </div>
-  </div>
-  
-<hr id="artificialInteligence"> 
-<!-- !PAGE CONTENT! -->
-<div class="w3-main w3-content w3-padding" style="max-width:1200px;margin-top:100px">
 
-  <!-- First Photo Grid-->
-  <div class="w3-white w3-xlarge" style="max-width:1200px;margin:auto">
-	<div class="w3-center w3-padding-16">Artificial Intelligence</div>
-  </div>
-  <div class="w3-row-padding w3-padding-16 w3-center">
-    <div class="w3-third">
-	  <span title="Flocking/Seperation">
-	  <a href="https://davisbutler10.github.io/Flocking--/">
-      <img src="img/flocking.jpg" alt="flocking/seperation" style="width:100%">
-	  </a>
-	  </span>
-      <h3>Dynamic Steering: Flocking/Seperation</h3>
-	  <p>Blended dynamic steering behavior made with a combination on flocking, seperation, and obstacle avoidance.</p>
-      <p><a href="https://davisbutler10.github.io/Flocking--/" target="_blank">scripts</a></p>
+    <div class="portfolio-item">
+      <a href="https://davisbutler10.github.io/AbstractFactory--/" target="_blank">
+        <img src="img/abstractfactory.jpg" alt="Abstract Factory" />
+      </a>
+      <h2>Abstract Factory</h2>
+      <p>Use of the decorator pattern to modify a rifle built with the abstract factory pattern.</p>
+      <a href="https://github.com/DavisButler10/AbstractFactory--/tree/master/Scripts" target="_blank">View Scripts</a>
     </div>
-    <div class="w3-third">
-	  <span title="Ballistics">
-	  <a href="https://davisbutler10.github.io/Ballistics--/">
-      <img src="img/ballistics.jpg" alt="flocking/seperation" style="width:100%">
-	  </a>
-	  </span>
-      <h3>Ballistics</h3>
-	  <p>Implementing a firing solution to launch a ball in a parabolic motion towards a target, over and over and over.</p>
-      <p><a href="https://github.com/DavisButler10/Ballistics--/tree/master/Scripts" target="_blank">scripts</a></p>
-    </div>
-	<div class="w3-third">
-	  <span title="Tactical Pathfinding">
-	  <a href="https://da  visbutler10.github.io/Flocking--/">
-      <img src="img/tacticalpathfinding.jpg" alt="tacticalpathfinding" style="width:100%">
-	  </a>
-	  </span>
-      <h3>Tactical Pathfinding</h3>
-	  <p>Pathfinding based on distance costs. This penguin really doesnt like mud, so will always choose the shortest path available to avoid it. If there is one on its course.</p>
-      <p><a href="https://github.com/DavisButler10/Tactical-Pathfinding/tree/master/Scripts" target="_blank">scripts</a></p>
-    </div>
-  </div>
-  <hr>
-  
-  <!-- Second Photo Grid-->
-  <div class="w3-row-padding w3-padding-16 w3-center">
-    <div class="w3-third">
-	  <span title="BehaviorTrees">
-	  <a href="https://davisbutler10.github.io/BehaviorTrees--/">
-      <img src="img/behaviortrees.jpg" alt="behaviortrees" style="width:100%">
-	  </a>
-	  </span>
-      <h3>BehaviorTrees</h3>
-	  <p>Based on Millington's code, this uses a selector and sequence tasks to implement and event driven behavior system with a few diffrent options.</p>
-      <p><a href="https://github.com/DavisButler10/BehaviorTrees--/tree/master/Scripts" target="_blank">scripts</a></p>
-    </div>
-    <div class="w3-third">
-	  <span title="Mazes">
-	  <a href="https://davisbutler10.github.io/Mazes--/">
-      <img src="img/mazes.jpg" alt="mazes" style="width:100%">
-	  </a>
-	  </span>
-      <h3>Mazes</h3>
-	  <p>Depth first backtracing method of procedural maze generation enhanced with a wonderful little cactus and his garbage movement code I added in a few minutes.</p>
-      <p><a href="https://github.com/DavisButler10/Mazes--/tree/master/Scripts" target="_blank">scripts</a></p>
-    </div>
-    <div class="w3-third">
-	  <span title="Goal Oriented Behavior">
-	  <a href="https://davisbutler10.github.io/GoalOrientedBehavior--/">
-      <img src="img/goalorientedbehavior.jpg" alt="goalorientedbehavior" style="width:100%">
-	  </a>
-	  </span>
-      <h3>Goal Oriented Behavior</h3>
-	  <p>A goal based behavior system with utility and timing to get a quick mockup of a dance simulator. Press e to dance.</p>
-      <p><a href="https://github.com/DavisButler10/GoalOrientedBehavior--/tree/master/Scripts" target="_blank">scripts</a></p>
-    </div>
-  </div>
-  
-  <hr id="multiplayerGames"> 
-<!-- !PAGE CONTENT! -->
-<div class="w3-main w3-content w3-padding" style="max-width:1200px;margin-top:100px">
 
-  <!-- First Photo Grid-->
-  <div class="w3-white w3-xlarge" style="max-width:1200px;margin:auto">
-	<div class="w3-center w3-padding-16">Multiplayer Games</div>
-  </div>
-  <div class="w3-row-padding w3-padding-16 w3-center">
-    <div class="w3-third">
-	  <span title="LeChapeau">
-	  <a href="https://davisbutler10.github.io/DB_M01_PR01-Le-Chapeau--/">
-      <img src="img/lechapeau.jpg" alt="lechapeau" style="width:100%">
-	  </a>
-	  </span>
-      <h3>Le Chapeau</h3>
-	  <p>My first multiplayer game using Unity's Photon Engine. Included is the ability to join rooms and play "hat tag" with friends.</p>
-      <p><a href="https://github.com/DavisButler10/DB_M01_PR01-Le-Chapeau--/tree/master/Scripts" target="_blank">scripts</a></p>
+    <div class="portfolio-item">
+      <a href="https://davisbutler10.github.io/EventQueue/" target="_blank">
+        <img src="img/eventqueue.jpg" alt="Event Queue" />
+      </a>
+      <h2>Event Queue</h2>
+      <p>Queue-based event bus system for spawning entities in order.</p>
+      <a href="https://github.com/DavisButler10/EventQueue/tree/master/Scripts" target="_blank">View Scripts</a>
     </div>
-    <div class="w3-third">
-	  <span title="RPG">
-	  <a href="https://davisbutler10.github.io/DB_M02_PR02-Battle-Royal--/">
-      <img src="img/battleroyale.jpg" alt="battleroyale" style="width:100%">
-	  </a>
-	  </span>
-      <h3>Battle Royale</h3>
-	  <p>My own little version of Fortnite. Join a lobby of friends and load into this multiplayer arena. Last man standing wins! Multiplayer made with Unity Photon Engine. </p>
-      <p><a href="https://github.com/DavisButler10/DB_M02_PR02-Battle-Royal--/tree/master/Scripts" target="_blank">scripts</a></p>
-    </div>
-	<div class="w3-third">
-	  <span title="RPG">
-	  <a href="https://davisbutler10.github.io/RPG--/">
-      <img src="img/rpg.jpg" alt="rpg" style="width:100%">
-	  </a>
-	  </span>
-      <h3>RPG</h3>
-	  <p>A mini multiplayer RPG complete with mystery box, weapon sets, chat box, and dungeon. All in one level! Once again, using Unity Photon Engine to connect clients. Press "E" to interact. </p>
-      <p><a href="https://github.com/DavisButler10/RPG--/tree/main/Scripts" target="_blank">scripts</a></p>
-    </div>
-  </div>
-  <hr>
-  
-  <!-- Second Photo Grid-->
-  <div class="w3-row-padding w3-padding-16 w3-center">
-    <div class="w3-third">
-	  <span title="Authentication">
-	  <a href="https://davisbutler10.github.io/DB_M04_DV01_Authentication/">
-      <img src="img/authentication.jpg" alt="authentication" style="width:100%">
-	  </a>
-	  </span>
-      <h3>Authentication</h3>
-	  <p>Creating accounts and logging in. Using Microsoft Azure PlayFab for back the back end system.</p>
-      <p><a href="https://github.com/DavisButler10/DB_M04_DV01_Authentication/tree/main/Scripts" target="_blank">scripts</a></p>
-    </div>
-    <div class="w3-third">
-	  <span title="Leaderboards">
-	  <a href="https://davisbutler10.github.io/DB_M04_DV02_Leaderboards/">
-      <img src="img/leaderboard.jpg" alt="leaderboard" style="width:100%">
-	  </a>
-	  </span>
-      <h3>Leaderboards</h3>
-	  <p>Creating, adding, and updating leaderboards. Cloudscripting using Microsoft Azure PlayFab.</p>
-      <p><a href="https://github.com/DavisButler10/DB_M04_DV02_Leaderboards/tree/main/Scripts" target="_blank">scripts</a></p>
-    </div>
-    <div class="w3-third">
-	  <span title="PlayerTrading">
-	  <a href="https://davisbutler10.github.io/DB_M05_DV02_PlayerTrading_2/">
-      <img src="img/playertrading.jpg" alt="playertrading" style="width:100%">
-	  </a>
-	  </span>
-      <h3>Player Trading</h3>
-	  <p>In game trading system. Once again using Microsoft Azure PlayFab and previous iterations of authentication we can keep track of player, items, inventorys, and trades.</p>
-      <p><a href="https://github.com/DavisButler10/DB_M05_DV02_PlayerTrading_2/tree/main/Scripts" target="_blank">scripts</a></p>
-    </div>
-  </div>
-  
-  <hr id="virtualReality"> 
-<!-- !PAGE CONTENT! -->
-<div class="w3-main w3-content w3-padding" style="max-width:1200px;margin-top:100px">
 
-  <!-- First Photo Grid-->
-  <div class="w3-white w3-xlarge" style="max-width:1200px;margin:auto">
-	<div class="w3-center w3-padding-16">Virtual Reality</div>
-  </div>
-  <div class="w3-row-padding w3-padding-16 w3-center">
-    <div class="w3-half">
-	  <span title="Movement">
-	  <a href="https://kuzoni.itch.io/db-m05-pr01-movement">
-      <img src="img/locomotion_climbing.JPG" alt="climbing" style="width:100%">
-	  </a>
-	  </span>
-      <h3>Movement: Climbing</h3>
-      <p>Implementing movement in a VR Unity scene. Use grabholds along the building to climb your way to the top.</p>
-	  <p><a href="https://github.com/DavisButler10/DB_M05_PR01_Movement/tree/main/Scripts" target="_blank">scripts</a></p>
+    <div class="portfolio-item">
+      <a href="https://davisbutler10.github.io/Dependency-Injection/" target="_blank">
+        <img src="img/dependencyinjection.jpg" alt="Dependency Injection" />
+      </a>
+      <h2>Dependency Injection</h2>
+      <p>Driving multiple plane objects using an injected dependency controller system.</p>
+      <a href="https://github.com/DavisButler10/Dependency-Injection/tree/master/Scripts" target="_blank">View Scripts</a>
     </div>
-    <div class="w3-half">
-	  <span title="User Interface">
-	  <a href="https://kuzoni.itch.io/db-m04-pr01-ui">
-      <img src="img/drawing_ui.JPG" alt="drawing_ui" style="width:100%">
-	  </a>
-	  </span>
-      <h3>User Interface</h3>
-      <p>Creating a user interface to interact with in VR. Point and click to choose a color, then draw a 3D object with the brush.</p>
-	  <p><a href="https://github.com/DavisButler10/DB_M04_PR01_UI/tree/main/Scripts" target="_blank">scripts</a></p>
-    </div>
-  </div>
-  <hr>
-  
-  <!-- Second Photo Grid-->
-  <div class="w3-row-padding w3-padding-16 w3-center">
-    <div class="w3-half">
-	  <span title="Hand-Based Controls">
-	  <a href="https://kuzoni.itch.io/db-m03-dv01-balloons">
-      <img src="img/balloons.JPG" alt="Hand-Based Controls" style="width:100%">
-	  </a>
-	  </span>
-      <h3>Hand-Based Controls</h3>
-      <p>Use hand based controls to grow a ballon and release it into the air. When you've had enough, grab the ball and throw it at the ballon to pop it.</p>
-	  <p><a href="https://github.com/DavisButler10/DB_M03_DV01_Balloons/tree/main/Scripts" target="_blank">scripts</a></p>
-    </div>
-    <div class="w3-half">
-	  <span title="Physics">
-	  <a href="https://kuzoni.itch.io/db-m07-dv01-physics">
-      <img src="img/pingpong.JPG" alt="physics" style="width:100%">
-	  </a>
-	  </span>
-      <h3>Physics</h3>
-      <p>Implementing a physics system in VR. Use the ping pong padel to hit balls back over then net.</p>
-	  <p><a href="https://github.com/DavisButler10/DB_M07_DV01_Physics/tree/main/Scripts" target="_blank">scripts</a></p>
-    </div>
-  </div>
-  </div>
-  
-  <hr id="Animation"> 
-<!-- !PAGE CONTENT! -->
-<div class="w3-main w3-content w3-padding" style="max-width:1200px;margin-top:100px">
 
-  <!-- First Video Grid-->
-  <div class="w3-white w3-xlarge" style="max-width:1200px;margin:auto">
-	<div class="w3-center w3-padding-16">Animation</div>
-  </div>
-  <div class="w3-row-padding w3-padding-16 w3-center">
-    <div class="w3-half">
-	  <span title="World Building I">
-	  <video width="480" height="360" controls>
-	  <source src="vids/WBI_Demo.mp4" type="video/mp4">
-	  </video>
-	  </a>
-	  </span>
-      <h3>World Building I</h3>
-      <p>In this video, you will see my first crack at Maya, Zbrush, and Houdini. Recreation of the Parthenon, an underwater submarine, and a bicycle using Maya. A fish and butterfly sculpt in Zbrush. And, a volcano erupting using Houdini. </p>
+    <div class="portfolio-item">
+      <a href="https://davisbutler10.github.io/SpacialPartition--/" target="_blank">
+        <img src="img/spatialpartitioning.jpg" alt="Spatial Partitioning" />
+      </a>
+      <h2>Spatial Partitioning</h2>
+      <p>Optimized entity tracking and updates using spatial partitioning techniques.</p>
+      <a href="https://github.com/DavisButler10/SpacialPartition--/tree/master/Scripts" target="_blank">View Scripts</a>
     </div>
-    <div class="w3-half">
-	  <span title="World Building II">
-      <video width="480" height="360" controls>
-	  <source src="vids/WBII_Demo.mp4" type="video/mp4">
-	  </video>
-	  </a>
-	  </span>
-      <h3>World Building II</h3>
-      <p>Using Maya, Zbrush, and Houdini again, I have lighting and rendering of a donut truck. Shown is several different lighting designs with shadows and daylight. Using Zbrush, I made a recreation of an alien using UV's and skinning. Last, the alien's icicle space pod in Houdini.  </p>
-    </div>
-  </div>
-  <hr>
-  
-  <!-- Second Video Grid-->
-  <div class="w3-row-padding w3-padding-16 w3-center">
-    <div class="w3-half">
-	  <span title="World Building III">
-      <video width="480" height="360" controls>
-	  <source src="vids/WBIII_Demo.mp4" type="video/mp4">
-	  </video>
-	  </a>
-	  </span>
-      <h3>World Building III</h3>
-      <p>I work through some of the basics of animation here. Creating toothbrush with a cape, animating arms and legs of a human and alien, then creating my owns animations to use and port into Unity. Last is my aliens final rig from scratch including rigging, control creationg, skinning, and animating.   </p>
-    </div>
-    <div class="w3-half">
-	  <span title="World Building IV">
-      <video width="480" height="360" controls>
-	  <source src="vids/WBIV_Demo.mp4" type="video/mp4">
-	  </video>
-	  </a>
-	  </span>
-      <h3>World Building IV</h3>
-      <p>This video shows the animation of a ball bouncing through a course, a character jumping, a character getting up from his chair, then walking, jumping, and a fully rendered mini animation of Yoda. </p>
-    </div>
-  </div>
-  </div>
-  
-  <hr id="about">
 
-  <!-- About Section -->
-  <div class="w3-container w3-padding-32 w3-center">  
-    <h3>About Me</h3><br>
-    <img src="img/me.jpeg" alt="Me" class="w3-image" style="display:block;margin:auto" width="400" height="266">
-    <div class="w3-padding-32">
-      <h4><b>Davis Butler</b></h4>
-      <h6><i>Games, Animation, and Simulation | Embry-Riddle Aeronautical University</i></h6>
-      <p>Game developer. All of these projects were made using Unity 2019/2020/2021. This page is an accumulation of my last 4 semesters in Game Engine Architecture, Artificial Intelligence, Multiplayer Games Systems, Virtual Reality Games, and Modeling/World Building classes. Some code is based off the implementations from these books: Artificial Intelligence for Games by Ian Millington, Game Programming Patterns by Robert Nystrom, and Hands-On Game Development Patterns with Unity 2019 by David Baron, Unity 2020 Virtual Reality Projects by Jonathon Linowes as well as multiplayer tutorials from Zenza Academy. </p>
+    <!-- Artificial Intelligence -->
+    <div class="portfolio-item">
+      <a href="https://davisbutler10.github.io/Flocking--/" target="_blank">
+        <img src="img/flocking.jpg" alt="Flocking/Separation" />
+      </a>
+      <h2>Flocking/Separation</h2>
+      <p>Blended steering behaviors: flocking, separation, and obstacle avoidance.</p>
+      <a href="https://davisbutler10.github.io/Flocking--/" target="_blank">View Scripts</a>
+    </div>
+
+    <div class="portfolio-item">
+      <a href="https://davisbutler10.github.io/Ballistics--/" target="_blank">
+        <img src="img/ballistics.jpg" alt="Ballistics" />
+      </a>
+      <h2>Ballistics</h2>
+      <p>Projectile motion simulation using physics-based firing solutions.</p>
+      <a href="https://github.com/DavisButler10/Ballistics--/tree/master/Scripts" target="_blank">View Scripts</a>
+    </div>
+
+    <div class="portfolio-item">
+      <a href="https://davisbutler10.github.io/Tactical-Pathfinding/" target="_blank">
+        <img src="img/tacticalpathfinding.jpg" alt="Tactical Pathfinding" />
+      </a>
+      <h2>Tactical Pathfinding</h2>
+      <p>Pathfinding with terrain-based cost evaluation to avoid muddy areas.</p>
+      <a href="https://github.com/DavisButler10/Tactical-Pathfinding/tree/master/Scripts" target="_blank">View Scripts</a>
+    </div>
+
+    <div class="portfolio-item">
+      <a href="https://davisbutler10.github.io/BehaviorTrees--/" target="_blank">
+        <img src="img/behaviortrees.jpg" alt="Behavior Trees" />
+      </a>
+      <h2>Behavior Trees</h2>
+      <p>Event-driven behavior system using selectors and sequences.</p>
+      <a href="https://github.com/DavisButler10/BehaviorTrees--/tree/master/Scripts" target="_blank">View Scripts</a>
+    </div>
+
+    <div class="portfolio-item">
+      <a href="https://davisbutler10.github.io/Mazes--/" target="_blank">
+        <img src="img/mazes.jpg" alt="Mazes" />
+      </a>
+      <h2>Mazes</h2>
+      <p>Procedural maze generation with fun animated cactus character.</p>
+      <a href="https://github.com/DavisButler10/Mazes--/tree/master/Scripts" target="_blank">View Scripts</a>
+    </div>
+
+    <div class="portfolio-item">
+      <a href="https://davisbutler10.github.io/GoalOrientedBehavior--/" target="_blank">
+        <img src="img/goalorientedbehavior.jpg" alt="Goal Oriented Behavior" />
+      </a>
+      <h2>Goal-Oriented Behavior</h2>
+      <p>Utility-based system with action timing and dancing AI logic.</p>
+      <a href="https://github.com/DavisButler10/GoalOrientedBehavior--/tree/master/Scripts" target="_blank">View Scripts</a>
+    </div>
+
+    <!-- Multiplayer Games -->
+    <div class="portfolio-item">
+      <a href="https://davisbutler10.github.io/DB_M01_PR01-Le-Chapeau--/" target="_blank">
+        <img src="img/lechapeau.jpg" alt="Le Chapeau" />
+      </a>
+      <h2>Le Chapeau</h2>
+      <p>Multiplayer "hat tag" game using Unity's Photon Engine.</p>
+      <a href="https://github.com/DavisButler10/DB_M01_PR01-Le-Chapeau--/tree/master/Scripts" target="_blank">View Scripts</a>
+    </div>
+
+    <div class="portfolio-item">
+      <a href="https://davisbutler10.github.io/DB_M02_PR02-Battle-Royal--/" target="_blank">
+        <img src="img/battleroyale.jpg" alt="Battle Royale" />
+      </a>
+      <h2>Battle Royale</h2>
+      <p>Multiplayer arena game with last-man-standing logic using Photon.</p>
+      <a href="https://github.com/DavisButler10/DB_M02_PR02-Battle-Royal--/tree/master/Scripts" target="_blank">View Scripts</a>
+    </div>
+
+    <div class="portfolio-item">
+      <a href="https://davisbutler10.github.io/RPG--/" target="_blank">
+        <img src="img/rpg.jpg" alt="RPG" />
+      </a>
+      <h2>RPG</h2>
+      <p>Mini multiplayer RPG featuring dungeons, loot boxes, and chat.</p>
+      <a href="https://github.com/DavisButler10/RPG--/tree/main/Scripts" target="_blank">View Scripts</a>
+    </div>
+
+    <div class="portfolio-item">
+      <a href="https://davisbutler10.github.io/DB_M04_DV01_Authentication/" target="_blank">
+        <img src="img/authentication.jpg" alt="Authentication" />
+      </a>
+      <h2>Authentication</h2>
+      <p>Account system using Microsoft Azure PlayFab backend.</p>
+      <a href="https://github.com/DavisButler10/DB_M04_DV01_Authentication/tree/main/Scripts" target="_blank">View Scripts</a>
+    </div>
+
+    <div class="portfolio-item">
+      <a href="https://davisbutler10.github.io/DB_M04_DV02_Leaderboards/" target="_blank">
+        <img src="img/leaderboard.jpg" alt="Leaderboards" />
+      </a>
+      <h2>Leaderboards</h2>
+      <p>Online leaderboards with cloud scripting via PlayFab.</p>
+      <a href="https://github.com/DavisButler10/DB_M04_DV02_Leaderboards/tree/main/Scripts" target="_blank">View Scripts</a>
+    </div>
+
+    <div class="portfolio-item">
+      <a href="https://davisbutler10.github.io/DB_M05_DV02_PlayerTrading_2/" target="_blank">
+        <img src="img/playertrading.jpg" alt="Player Trading" />
+      </a>
+      <h2>Player Trading</h2>
+      <p>Item trading system with player inventory tracking using PlayFab.</p>
+      <a href="https://github.com/DavisButler10/DB_M05_DV02_PlayerTrading_2/tree/main/Scripts" target="_blank">View Scripts</a>
     </div>
   </div>
-  <hr>
-  
-  <!-- Footer -->
-  <footer class="w3-container w3-padding-32 w3-center">
-    <div class="w3-padding-32">
-      <p>The existance of this page is powered by <a href="https://www.w3schools.com/w3css/default.asp" target="_blank">w3.css</a> and GitHub</p>
-    </div>
-  
-    
-  </footer>
+</section>
 
-<!-- End page content -->
-</div>
 
-<script>
-// Script to open and close sidebar
-function w3_open() {
-  document.getElementById("mySidebar").style.display = "block";
+    <section id="resume" class="tab-content">
+		<h1>Resume</h1>
+
+  <div style="display: flex; justify-content: center;">
+    <a href="resume.pdf" target="_blank">
+      <img src="resume.png" alt="Resume of Davis Butler"
+           style="max-width: 100%; width: auto; height: auto; border: 4px solid #00aaff; image-rendering: pixelated;" />
+    </a>
+  </div>
+
+  <p style="text-align: center; margin-top: 1rem;">
+    <a href="resume.pdf" download style="color: #00ffff; text-decoration: underline;">
+      Download Full Resume (PDF)
+    </a>
+  </p>
+</section>
+	</div>
+  </main>
+
+  <script>
+    function showTab(id) {
+  document.querySelectorAll('.tab-content').forEach(tab => {
+    tab.classList.remove('active');
+  });
+
+  document.getElementById(id).classList.add('active');
+
+  document.querySelectorAll('.tab-buttons button').forEach(btn => {
+    btn.classList.remove('active');
+  });
+
+  document.querySelector(`.tab-buttons button[data-tab="${id}"]`).classList.add('active');
 }
- 
-function w3_close() {
-  document.getElementById("mySidebar").style.display = "none";
-}
-</script>
+  </script>
 
 </body>
 </html>
