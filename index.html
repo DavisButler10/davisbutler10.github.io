@@ -157,7 +157,47 @@
   font-size: 0.6rem;
   text-decoration: underline;
 }
-  </style>
+  
+@media screen and (max-width: 768px) {
+  .content-wrapper {
+    max-width: 90%;
+    padding: 0 1rem;
+  }
+
+  .portfolio-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .portfolio-item {
+    width: 100%;
+  }
+
+  section#minecraft > div,
+  section#portfolio > div,
+  section#resume > div {
+    grid-template-columns: 1fr !important;
+  }
+
+  section#minecraft img,
+  section#portfolio img,
+  section#resume img {
+    width: 100% !important;
+    height: auto !important;
+  }
+
+  .tab-buttons {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.75rem;
+  }
+
+  .tab-buttons button {
+    font-size: 0.65rem;
+    padding: 0.25rem;
+  }
+}
+
+</style>
 </head>
 <body>
 
@@ -197,7 +237,7 @@
   </p>
 
   <p style="margin-bottom: 4rem; line-height: 1.8;">
-    I come from a background in <span style="color: #00ff99; font-weight: bold;">Simulation Science</span> and 
+    I come from a background in <span style="color: #00ff99; font-weight: bold;">Simulation Science, Animation, and Game Development</span> and 
     <span style="color: #00ff99; font-weight: bold;">Cyber Security</span>, and I love blending 
     <span style="color: #ffff66; font-weight: bold;">creativity with technical problem-solving</span>. 
     Whether I’m <span style="color: #00aaff; font-weight: bold;">building systems from scratch</span> or 
@@ -205,6 +245,11 @@
     <span style="color: #ffff66; font-weight: bold;">gameplay mechanics</span>, I’m all about 
     <span style="color: #ff4c4c; font-weight: bold;">crafting projects that players love</span>.
   </p>
+  
+  <p style="margin-bottom: 4rem; line-height: 1.8;"> On this site, you’ll also find a few dedicated tabs: one showcasing my latest work in 
+  <span style="color: orange; font-weight: bold;">Minecraft</span>, another featuring my <span style="color: #ffff66; font-weight: bold;">
+  Portfolio</span> across different disciplines and fun side projects, and a final tab where you can download my<span style="color: #00ff99; font-weight: bold;">
+  Resume</span> for a closer look at my experience. </p>
 	<div style="text-align: center; margin-top: 2rem;">
     <!-- Your profile image -->
     <img src="img/profile.jpg" alt="Davis Butler" width="378" height="504" 
@@ -236,9 +281,8 @@
   <div>
     <h3 style="color: orange;">Prison</h3>
     <p style="line-height: 1.6;">
-      A progressive mining and economy gamemode where players grind through increasingly complex mines,
-      unlock perks, and trade with other inmates. I designed custom pickaxe upgrades, animated prestige menus,
-      and oversaw multiple season resets with performance improvements.
+	  Implemetned 3 years of updates and expansions including seasonal system, season pass, boss fights, new mines, all art and models for season armors,
+	  new UI system, and 20+ purchasables attributing to Prison becoming the most popular gamemode in terms of player count and revenue.
     </p>
     <img src="img/prison2.png" style="width: 100%; margin-top: 1rem; image-rendering: pixelated; border: 2px solid #333;" />
   </div>
@@ -253,11 +297,10 @@
     <div>
       <h3 style="color: orange;">Skyblock</h3>
       <p style="line-height: 1.6;">
-  Players start on a tiny floating island and expand outward, automating farms and fighting sky bosses.
-  I helped develop unique island mechanics, multiplayer co-op systems, and custom mob behavior for rare spawns.
+  I spearheaded major expansions for this gamemode, including the fan-favorite Sky Cavern Update, which introduced unique boss battles and exclusive gear that gave players fresh goals to grind for. 
   <br><br>
-  My focus was on designing scalable island expansion tools, coding resource generators using Minecraft functions,
-  and balancing gameplay loops to keep player progression engaging across all tiers.
+  I led the implementation of all additional updates — from redstone systems and minecarts to quality-of-life improvements, the Battle Tower, and full integration of core Minecraft mechanics. 
+  Every feature was designed to deepen progression, enhance co-op play, and keep the Skyblock experience dynamic and rewarding.
 </p>
       <img src="img/skyblock3.png" style="width: 100%; image-rendering: pixelated; border: 2px solid #333; margin-top: 1rem;" />
     </div>
@@ -268,54 +311,62 @@
   </div>
 
   <!-- Farming Simulator -->
-  <div style="margin-bottom: 4rem; display: grid; grid-template-columns: 2fr 1fr; gap: 1.5rem; align-items: end;">
-    <div>
-      <h3 style="color: orange;">🌾 Farming Simulator</h3>
-      <p style="line-height: 1.6;">
-        Players manage massive farms, automate planting and harvesting, and trade crops for better equipment.
-        I handled performance optimization for large field rendering, and scripted dynamic seasons that affect yields.
-      </p>
-      <img src="img/farming1.png" style="width: 100%; image-rendering: pixelated; border: 2px solid #333; margin-top: 1rem;" />
-    </div>
-    <div>
-      <img src="img/farming2.png" style="width: 100%; image-rendering: pixelated; border: 2px solid #333;" />
-    </div>
+  <div style="margin-bottom: 4rem; display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; align-items: center;">
+  <div>
+    <img src="img/farming1.jpg" style="width: 100%; image-rendering: pixelated; border: 2px solid #333; margin-bottom: 1rem;" />
+    <img src="img/farming2.png" style="width: 100%; image-rendering: pixelated; border: 2px solid #333;" />
   </div>
+  <div>
+    <h3 style="color: orange;">Farming Simulator</h3>
+    <p style="line-height: 1.6;">
+      I single-handedly designed and developed this gamemode from the ground up, creating a full new farming experience within Minecraft. 
+	  This included implementing core systems like crop growth, animal farming, fishing, and mining — all built with performance and scalability in mind. 
+      <br><br>
+      I also researched and developed methods for integrating custom block models, allowing for non-vanilla assets that enhanced visual variety and immersion. 
+	  The result was a dynamic, optimized gameplay loop that felt both familiar and fresh to players.
+    </p>
+  </div>
+</div>
 
   <!-- Dungeon Simulator -->
   <div style="margin-bottom: 4rem; display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; align-items: center;">
-    <div style="display: flex; flex-direction: column; gap: 1rem;">
-      <img src="img/dungeon1.png" style="width: 100%; image-rendering: pixelated; border: 2px solid #333;" />
-      <img src="img/dungeon2.png" style="width: 100%; image-rendering: pixelated; border: 2px solid #333;" />
-    </div>
-    <div>
-      <h3 style="color: orange;">🏰 Dungeon Simulator</h3>
-      <p style="line-height: 1.6;">
-        An adventure-focused mode with procedurally generated dungeons, traps, and monster waves.
-        I implemented the dungeon layout generator, reward chests, and boss battle mechanics with redstone and commands.
-      </p>
-    </div>
+  <div>
+    <h3 style="color: orange;">Dungeon Simulator</h3>
+    <p style="line-height: 1.6;">
+      As my first major assignment on the server, I was tasked with completely rebuilding the Dungeon Simulator gamemode from the ground up. 
+	  What started as a basic dungeon crawler was transformed into a deep, progression-based experience that gave players a reason to return, grind, and improve. 
+	  I designed and implemented a full stat progression system, allowing players to level up and prestige attributes that enhanced their performance across dungeon runs. 
+	  <br><br>
+	  I also created a wide variety of unique items and rewards, each with special mechanics to add variety and strategic depth to gameplay. 
+	  Boss encounters were reimagined with custom mechanics and behaviors, making each battle feel distinct and rewarding.
+	  In addition to gameplay systems, I researched and developed custom UI features to better support progression tracking, item interaction, and stat management.
+	  I focused heavily on the overall player experience — ensuring there were clear goals, satisfying feedback loops, and a natural sense of growth. 	  
+    </p>
   </div>
+  <div style="display: flex; flex-direction: column; gap: 1rem;">
+    <img src="img/dungeon1.png" style="width: 100%; image-rendering: pixelated; border: 2px solid #333;" />
+    <img src="img/dungeon2.png" style="width: 100%; image-rendering: pixelated; border: 2px solid #333;" />
+  </div>
+</div>
 
   <!-- Cookcraft -->
   <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-bottom: 4rem; align-items: start;">
     <div style="display: flex; flex-direction: column; justify-content: flex-end;">
-      <img src="img/cookcraft2.png" style="width: 100%; margin-bottom: 1rem; image-rendering: pixelated; border: 2px solid #333;" />
-      <img src="img/cookcraft1.png" style="width: 100%; image-rendering: pixelated; border: 2px solid #333;" />
+      <img src="img/cookcraft1.png" style="width: 100%; margin-bottom: 1rem; image-rendering: pixelated; border: 2px solid #333;" />
+      <img src="img/cookcraft3.png" style="width: 100%; image-rendering: pixelated; border: 2px solid #333;" />
     </div>
     <div style="display: flex; flex-direction: column; justify-content: space-between;">
       <div>
-        <h3 style="color: orange;">🍳 Cookcraft</h3>
+        <h3 style="color: orange;">Cookcraft</h3>
         <p style="line-height: 1.6;">
-          A fast-paced kitchen simulation game where players prepare recipes for villagers under time pressure.
-          I built the crafting logic, coordinated with artists for retro UI, and coded the recipe queue / scoring systems.
+          Expanded the gameplay with a dynamic restaurant customization system, allowing players to design their space using a wide range of furniture, decorations, and custom block styles. 
+		  Developed an intuitive placement system that empowered full creative control, making each restaurant feel unique. 
           <br><br>
-          Each dish had randomized ingredients, a score tracker, and a satisfaction meter per customer,
-          all built with ScriptableObjects for modularity and editor-friendly tweaking.
+          Also introduced a brand-new cooking and crafting system featuring hundreds of new items, detailed tutorials, and an expanded recipe catalog to keep players engaged and experimenting.
         </p>
       </div>
       <div>
-        <img src="img/cookcraft3.png" style="width: 100%; image-rendering: pixelated; border: 2px solid #333;" />
+        <img src="img/cookcraft2.png" style="width: 100%; image-rendering: pixelated; border: 2px solid #333;" />
       </div>
     </div>
   </div>
